@@ -1,0 +1,17 @@
+services:
+  app:
+    #build:
+    #  context: .
+    image: lucasfbr/react-app
+    container_name: react_front-${CONTAINER_PREFIX}
+    restart: always
+    volumes:
+      - "./react-app/public:/app/public"
+      - "./react-app/src:/app/src"
+    command: npm start
+
+    ports:
+      - ${APP_PORT}:3000
+
+    environment:
+      - NODE_ENV=development
